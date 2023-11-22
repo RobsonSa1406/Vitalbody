@@ -1,0 +1,1540 @@
+//Còdigo Fonte Projeto VitalBody - Clínica Médica (Forms WebPage); 
+//Utilizando APACHE NetBeans IDE 17, XAMPP (Apache, MySQL e Tomcat); 
+
+//1.1.Index/Modulo de Controle para demais tela:
+
+//index.jsp
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Menu - Clinica </title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+        <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+            margin: 0;
+            padding: 0;
+        }
+
+        h1 {
+            text-align: center;
+            background-color: #3498db;
+            color: #ffffff;
+            padding: 20px;
+            margin-top: 0;
+        }
+
+        .container {
+            background-color: #ffffff;
+            width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .section {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        input[type="text"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 3px;
+        }
+
+        input[type="submit"] {
+            background-color: #3498db;
+            color: #ffffff;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #2980b9;
+        }
+    </style>
+</head>
+        </style>
+    </head>
+
+    <body>
+        <h1>Controle da Clínica</h1>
+        <span class="material-symbols-outlined"> person_add </span>
+        <button onclick="document.location='Cadastro_Paciente.jsp'">Cadastro de Paciente</button> <p>    
+            
+        <span class="material-symbols-outlined"> sort </span>
+        <button onclick="document.location='Consulta_Paciente_Geral.jsp'">Consulta Geral de Paciente</button> <p>
+            
+        <span class="material-symbols-outlined"> person_search </span>
+        <button onclick="document.location='Consulta_Paciente.jsp'">Consulta pelo RG do Paciente</button> <p>    
+            
+        <span class="material-symbols-outlined"> list </span>
+        <button onclick="document.location='Consulta_Paciente_Lista.jsp'">Consulta em Formato de Lista</button> <p>
+            
+        <span class="material-symbols-outlined"> update </span>
+        <button onclick="document.location='Alteração_Paciente.jsp'">Alteração no Cadastro do Paciente</button> <p> 
+            
+        <span class="material-symbols-outlined"> delete </span>    
+        <button onclick="document.location='Exclusão_Paciente.jsp'">Exclusão de Paciente</button> <p>       
+                   
+    </body>
+</html>
+
+----------------------------------------------------------------
+
+//1.2. Class e modelDAO:
+
+//fichaMedica.java (Class)
+public class fichaMedica {
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public String getNome() {
+        return nome;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+
+    public String getSobrenome() {
+        return sobrenome;
+    }
+
+    public void setSobrenome(String sobrenome) {
+        this.sobrenome = sobrenome;
+    }
+
+    public String getNomeMae() {
+        return nomeMae;
+    }
+
+    public void setNomeMae(String nomeMae) {
+        this.nomeMae = nomeMae;
+    }
+
+    public String getNomeSocial() {
+        return nomeSocial;
+    }
+
+    public void setNomeSocial(String nomeSocial) {
+        this.nomeSocial = nomeSocial;
+    }
+
+    public String getConvenio() {
+        return convenio;
+    }
+
+    public void setConvenio(String convenio) {
+        this.convenio = convenio;
+    }
+
+    public String getPlano() {
+        return plano;
+    }
+
+    public void setPlano(String plano) {
+        this.plano = plano;
+    }
+
+    public String getSubPlano() {
+        return subPlano;
+    }
+
+    public void setSubPlano(String subPlano) {
+        this.subPlano = subPlano;
+    }
+
+    public String getEndereco() {
+        return endereco;
+    }
+
+    public void setEndereco(String endereco) {
+        this.endereco = endereco;
+    }
+
+    public String getRg() {
+        return rg;
+    }
+
+    public void setRg(String rg) {
+        this.rg = rg;
+    }
+
+    public String getCpf() {
+        return cpf;
+    }
+
+    public void setCpf(String cpf) {
+        this.cpf = cpf;
+    }
+
+    public String getProcedimento() {
+        return procedimento;
+    }
+
+    public void setProcedimento(String procedimento) {
+        this.procedimento = procedimento;
+    }
+
+    public String getEspecialidade() {
+        return especialidade;
+    }
+
+    public void setEspecialidade(String especialidade) {
+        this.especialidade = especialidade;
+    }
+
+    public String getNomeMedico() {
+        return nomeMedico;
+    }
+
+    public void setNomeMedico(String nomeMedico) {
+        this.nomeMedico = nomeMedico;
+    }
+    
+    //Atributos
+    private int id;
+    private String nome;
+    private String sobrenome;
+    private String nomeMae;
+    private String nomeSocial;
+    private String convenio;
+    private String plano;
+    private String subPlano;
+    private String endereco;
+    private String rg;
+    private String cpf;
+    private String procedimento;
+    private String especialidade;
+    private String nomeMedico;    
+}
+
+//fichaMedicaDAO.java (ModelDAO)
+package dao;
+
+import model.fichaMedica;
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+
+public class fichaMedicaDAO {
+    
+    private final String URL = "jdbc:mysql://localhost:3306/Clinica";
+    private final String DBUser = "clinica";
+    private final String DBPassword = "clinica";
+    
+    
+    public Connection con;
+    
+    public Connection getConnection() throws ClassNotFoundException, SQLException {
+        Class.forName("com.mysql.jdbc.Driver");
+        
+        return DriverManager.getConnection(this.URL, this.DBUser, this.DBPassword);
+    }
+
+    public int adicionarFicha(fichaMedica fm) throws ClassNotFoundException, SQLException {
+        con = getConnection();
+        
+        String q = "INSERT INTO fichaMedica VALUE (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+        
+        PreparedStatement st = con.prepareStatement(q);
+        
+        st.setInt(1, fm.getId());
+        st.setString(2, fm.getNome());
+        st.setString(3, fm.getSobrenome());
+        st.setString(4, fm.getNomeMae());
+        st.setString(5, fm.getNomeSocial());
+        st.setString(6, fm.getConvenio());
+        st.setString(7, fm.getPlano());
+        st.setString(8, fm.getSubPlano());
+        st.setString(9, fm.getEndereco());
+        st.setString(10, fm.getRg());
+        st.setString(11, fm.getCpf());
+        st.setString(12, fm.getProcedimento());
+        st.setString(13, fm.getEspecialidade());
+        st.setString(14, fm.getNomeMedico());
+        
+        int execute = st.executeUpdate();
+        
+        con.close();
+        return execute;
+    }    
+}
+
+-----------------------------------------------------------------
+
+//1.3.Cadastro de Paciente:
+
+//Cadastro_Paciente.jsp
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Ficha Médica</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+            margin: 0;
+            padding: 0;
+        }
+
+        h1 {
+            text-align: center;
+            background-color: #3498db;
+            color: #ffffff;
+            padding: 20px;
+            margin-top: 0;
+        }
+
+        .container {
+            background-color: #ffffff;
+            width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .section {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        input[type="text"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 3px;
+        }
+
+        input[type="submit"] {
+            background-color: #3498db;
+            color: #ffffff;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #2980b9;
+        }
+    </style>
+</head>
+<body>
+    <h1>Ficha Médica - Paciente </h1>
+    <div class="container">
+        <form action="Cadastro_Paciente_Res.jsp" method="post">
+            <div class="section">
+                <h2>Informações Pessoais</h2>
+                <input hidden type="text" id="id" name="id">
+
+                <label for="nome">Nome:</label>
+                <input type="text" id="nome" name="nome">
+                
+                <label for="nome">Nome social:</label>
+                <input type="text" id="nomeSocial" name="nomeSocial">
+
+                <label for="sobrenome">Sobrenome:</label>
+                <input type="text" id="sobrenome" name="sobrenome">
+
+                <label for="nomeMae">Nome da Mãe:</label>
+                <input type="text" id="nomeMae" name="nomeMae">
+            </div>
+
+            <div class="section">
+                <h2>Informações do Convênio</h2>
+                <label for="convenio">Convênio:</label>
+                <input type="text" id="convenio" name="convenio">
+
+                <label for="plano">Plano:</label>
+                <input type="text" id="plano" name="plano">
+
+                <label for="subPlano">Sub-Plano:</label>
+                <input type="text" id="subPlano" name="subPlano">
+            </div>
+
+            <div class="section">
+                <h2>Endereço e Documentos</h2>
+                <label for="endereco">Endereço:</label>
+                <input type="text" id="endereco" name="endereco">
+
+                <label for="rg">RG:</label>
+                <input type="text" id="rg" name="rg">
+
+                <label for="cpf">CPF:</label>
+                <input type="text" id="cpf" name="cpf">
+            </div>
+
+            <div class="section">
+                <h2>Informações Médicas</h2>
+                <label for="procedimento">Procedimento:</label>
+                <input type="text" id="procedimento" name="procedimento">
+
+                <label for="especialidade">Especialidade:</label>
+                <input type="text" id="especialidade" name="especialidade">
+
+                <label for="nomeMedico">Nome do Médico:</label>
+                <input type="text" id="nomeMedico" name="nomeMedico">
+            </div>
+
+            <input type="submit" value="Enviar">
+        </form>
+    </div>
+</body>
+</html>
+
+//Cadastro_Paciente_Res.jsp
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@page import="model.fichaMedica"%>
+<%@page import="java.text.*" import="java.lang.*"%>
+<%@page import="java.sql.*"%>
+<%@ page import="model.fichaMedica" %>
+<%@ page import="dao.fichaMedicaDAO" %>
+<jsp:useBean id="ficha" class="model.fichaMedica" />
+<jsp:useBean id="fichaDao" class="dao.fichaMedicaDAO" />
+<jsp:setProperty property="*" name="ficha" />
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title> Cadastro do Paciente </title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+            margin: 0;
+            padding: 0;
+        }
+
+        h1 {
+            text-align: center;
+            background-color: #3498db;
+            color: #ffffff;
+            padding: 20px;
+            margin-top: 0;
+        }
+
+        .container {
+            background-color: #ffffff;
+            width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .section {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        input[type="text"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 3px;
+        }
+
+        input[type="submit"] {
+            background-color: #3498db;
+            color: #ffffff;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #2980b9;
+        }
+    </style>
+</head>
+<body>
+    <h1> Cadastro do Paciente </h1>
+    
+        <%
+            // Recebendo dados
+            fichaMedica FM = new fichaMedica();  //instância
+            String id = request.getParameter("id");
+            String nome = request.getParameter("nome");
+            String sobrenome = request.getParameter("sobrenome");
+            String nomeMae = (request.getParameter("nomeMae"));
+            String nomeSocial = request.getParameter("nomeSocial");
+            String convenio = request.getParameter("convenio");
+            String plano = request.getParameter("plano");
+            String subPlano = request.getParameter("subPlano");
+            String endereco = request.getParameter("endereco");
+            String rg = request.getParameter("rg");
+            String cpf = request.getParameter("cpf");
+            String procedimento = request.getParameter("procedimento");
+            String especialidade = request.getParameter("especialidade");
+            String nomeMedico = request.getParameter("nomeMedico");
+            
+            try {
+            Class.forName("com.mysql.jdbc.Driver"); // Registra          
+            Connection conexao = DriverManager.getConnection("jdbc:mysql://localhost:3306/clinica", "root", ""); // Abrindo Conexão
+            String sql = "INSERT INTO fichamedica (nome, sobrenome, nomeMae, nomeSocial, convenio, " +
+                        "plano, subPlano, endereco, cpf, procedimento, especialidade, nomeMedico, rg) " +
+                        "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)"; // Definindo instrução SQL
+
+            try (PreparedStatement pstmt = conexao.prepareStatement(sql)) {
+                pstmt.setString(1, nome);
+                pstmt.setString(2, sobrenome);
+                pstmt.setString(3, nomeMae);
+                pstmt.setString(4, nomeSocial);
+                pstmt.setString(5, convenio);
+                pstmt.setString(6, plano);
+                pstmt.setString(7, subPlano);
+                pstmt.setString(8, endereco);
+                pstmt.setString(9, cpf);
+                pstmt.setString(10, procedimento);
+                pstmt.setString(11, especialidade);
+                pstmt.setString(12, nomeMedico);
+                pstmt.setString(13, rg);
+
+                pstmt.executeUpdate(); // Executando Query.
+            } // O recurso PreparedStatement é automaticamente fechado aqui
+            
+            conexao.close(); // Fechando Conexão
+            } catch (ClassNotFoundException | SQLException e) {
+            e.printStackTrace(); // Trate exceções de maneira adequada em sua aplicação.
+        }
+
+        %>
+
+        <%  
+          //Saída
+            out.println("<b> Registro Concluido </b>");
+            out.println("<br> Nome: " + nome );
+            out.println("<br> Sobrenome: " + sobrenome);
+            out.println("<br> Nome da Mãe: " + nomeMae);
+            out.println("<br> Nome Social: " + nomeSocial);
+            out.println("<br> Convênio: " + convenio);
+            out.println("<br> Plano: " + plano);
+            out.println("<br> SubPlano: " + subPlano);
+            out.println("<br> Endereco: " + endereco);
+            out.println("<br> Registro Geral R.G.: " + rg);
+            out.println("<br> Cadastro de Pessoa Física C.P.F.: " + cpf);
+            out.println("<br> Procedimento: " + procedimento);
+            out.println("<br> Especialidade: " + especialidade);
+            out.println("<br> Nome do Médico: " + nomeMedico);                
+        %>             
+  </body>   
+</html>
+
+----------------------------------------------------------------
+
+//1.4. Consulta Geral de Paciente:
+
+//Consulta_Paciente_Geral.jsp
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@page import="model.fichaMedica"%>
+<%@page import="java.text.*" import="java.lang.*"%>
+<%@page import="java.sql.*"%>
+<%@ page import="model.fichaMedica" %>
+<%@ page import="dao.fichaMedicaDAO" %>
+<jsp:useBean id="ficha" class="model.fichaMedica" />
+<jsp:useBean id="fichaDao" class="dao.fichaMedicaDAO" />
+<jsp:setProperty property="*" name="ficha" />
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title> Todos Pacientes da Clínica </title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+            margin: 0;
+            padding: 0;
+        }
+
+        h1 {
+            text-align: center;
+            background-color: #3498db;
+            color: #ffffff;
+            padding: 20px;
+            margin-top: 0;
+        }
+
+        .container {
+            background-color: #ffffff;
+            width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .section {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        input[type="text"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 3px;
+        }
+
+        input[type="submit"] {
+            background-color: #3498db;
+            color: #ffffff;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #2980b9;
+        }
+    </style>
+</head>
+<body>
+    <h1> Todos Pacientes da Clínica </h1>
+
+    <%
+            // Recebendo dados
+            String rg = request.getParameter("rg");                        
+            
+            //Consultar
+            try{
+                Class.forName("com.mysql.jdbc.Driver"); //Registra;            
+                Connection conexao = DriverManager.getConnection("jdbc:mysql://localhost:3306/clinica", "root", ""); // Abrindo Conexão;
+                Statement stmt = conexao.createStatement(); //Criando instrução;               
+                String sql = "SELECT * FROM fichamedica "; //Definição instrução SQL;
+                ResultSet rs = stmt.executeQuery(sql); // Executando Query;
+                
+                //Saída
+                while (rs.next()){
+                    out.println("<br><br><b> Todos Pacientes Registratos </b>");
+                    out.println("<br> Identificação: " + rs.getString("id"));
+                    out.println("<br> Nome: " + rs.getString("nome"));
+                    out.println("<br> Sobrenome: " + rs.getString("sobrenome"));
+                    out.println("<br> Nome da Mãe: " +  rs.getString("nomeMae"));
+                    out.println("<br> Nome Social: " + rs.getString("nomeSocial"));
+                    out.println("<br> Convênio: " +  rs.getString("convenio"));
+                    out.println("<br> Plano: " + rs.getString("plano"));
+                    out.println("<br> SubPlano: " + rs.getString("subPlano"));
+                    out.println("<br> Endereço: " + rs.getString("endereco"));
+                    out.println("<br> Registro Geral (R.G.): " + rs.getString("rg"));
+                    out.println("<br> Cadastro de Pessoa Fisica (C.P.F.): " + rs.getString("cpf"));
+                    out.println("<br> Procedimento: " + rs.getString("procedimento"));
+                    out.println("<br> Especialidade: " + rs.getString("especialidade"));
+                    out.println("<br> Mome do Médico: " + rs.getString("nomeMedico"));
+                    out.println("<br> ____________________________________" );
+                }             
+                               
+                conexao.close(); //Fechando Conexão                
+            }
+            catch(Exception ex){
+                ex.printStackTrace();
+                out.println("Erro: " + ex.toString());
+            }            
+        %>  
+    </body>   
+</html>
+
+-----------------------------------------------------------------
+
+//1.5.Consulta pelo R.G.:
+
+//Consulta_Paciente.jsp
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Ficha Médica - Consulta</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+            margin: 0;
+            padding: 0;
+        }
+
+        h1 {
+            text-align: center;
+            background-color: #3498db;
+            color: #ffffff;
+            padding: 20px;
+            margin-top: 0;
+        }
+
+        .container {
+            background-color: #ffffff;
+            width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .section {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        input[type="text"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 3px;
+        }
+
+        input[type="submit"] {
+            background-color: #3498db;
+            color: #ffffff;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #2980b9;
+        }
+    </style>
+</head>
+<body>
+    <h1>Ficha Médica - Consulta pelo R.G. </h1>
+    <div class="container">
+        <form action="Consulta_Paciente_RG.jsp" method="post">
+            <div class="section">
+                <h2>Informações para consulta</h2>                         
+                <label for="rg">RG:</label>
+                <input type="text" id="rg" name="rg">
+            </div>
+            <input type="reset" name="limpa" value="Limpar"> 
+            <input type="submit" value="Enviar">
+        </form>
+      </div>
+  </body>
+</html>
+
+
+//Consulta_Paciente_RG
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@page import="model.fichaMedica"%>
+<%@page import="java.text.*" import="java.lang.*"%>
+<%@page import="java.sql.*"%>
+<%@ page import="model.fichaMedica" %>
+<%@ page import="dao.fichaMedicaDAO" %>
+<jsp:useBean id="ficha" class="model.fichaMedica" />
+<jsp:useBean id="fichaDao" class="dao.fichaMedicaDAO" />
+<jsp:setProperty property="*" name="ficha" />
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title> Resultado Cadastro Paciente </title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+            margin: 0;
+            padding: 0;
+        }
+
+        h1 {
+            text-align: center;
+            background-color: #3498db;
+            color: #ffffff;
+            padding: 20px;
+            margin-top: 0;
+        }
+
+        .container {
+            background-color: #ffffff;
+            width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .section {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        input[type="text"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 3px;
+        }
+
+        input[type="submit"] {
+            background-color: #3498db;
+            color: #ffffff;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #2980b9;
+        }
+    </style>
+</head>
+<body>
+    <h1> Resultado Cadastro Paciente </h1>
+
+    <%
+            // Recebendo dados
+            
+            String rg = request.getParameter("rg");                      
+            
+            //Consultar
+            try{
+                Class.forName("com.mysql.jdbc.Driver"); //Registra;            
+                Connection conexao = DriverManager.getConnection("jdbc:mysql://localhost:3306/clinica", "root", ""); // Abrindo Conexão;
+                Statement stmt = conexao.createStatement(); //Criando instrução;               
+                String sql = "SELECT * FROM fichamedica WHERE rg = " + rg; //Definição instrução SQL;
+                ResultSet rs = stmt.executeQuery(sql); // Executando Query;
+                
+                //Saída
+                while (rs.next()){
+                    out.println("<br><br><b> Registro Encontrado do Paciente </b>");
+                    out.println("<br> Identificação: " + rs.getString("id"));
+                    out.println("<br> Nome: " + rs.getString("nome"));
+                    out.println("<br> Sobrenome: " + rs.getString("sobrenome"));
+                    out.println("<br> Nome da Mãe: " +  rs.getString("nomeMae"));
+                    out.println("<br> Nome Social: " + rs.getString("nomeSocial"));
+                    out.println("<br> Convênio: " +  rs.getString("convenio"));
+                    out.println("<br> Plano: " + rs.getString("plano"));
+                    out.println("<br> SubPlano: " + rs.getString("subPlano"));
+                    out.println("<br> Endereço: " + rs.getString("endereco"));
+                    out.println("<br> Registro Geral (R.G.): " + rs.getString("rg"));
+                    out.println("<br> Cadastro de Pessoa Fisica (C.P.F.): " + rs.getString("cpf"));
+                    out.println("<br> Procedimento: " + rs.getString("procedimento"));
+                    out.println("<br> Especialidade: " + rs.getString("especialidade"));
+                    out.println("<br> Mome do Médico: " + rs.getString("nomeMedico"));
+            
+                }             
+                               
+                conexao.close(); //Fechando Conexão               
+            }
+            catch(Exception ex){
+                ex.printStackTrace();
+                out.println("Erro: " + ex.toString());
+            }           
+        %>       
+    </body>   
+</html>
+
+-----------------------------------------------------------------
+
+//1.6.Consulta por Lista:
+
+//Consulta_Paciente_Lista.jsp
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@page import="model.fichaMedica"%>
+<%@page import="java.text.*" import="java.lang.*"%>
+<%@page import="java.sql.*"%>
+<%@ page import="model.fichaMedica" %>
+<%@ page import="dao.fichaMedicaDAO" %>
+<jsp:useBean id="ficha" class="model.fichaMedica" />
+<jsp:useBean id="fichaDao" class="dao.fichaMedicaDAO" />
+<jsp:setProperty property="*" name="ficha" />
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title> lista de Pacientes da Clinica </title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+            margin: 0;
+            padding: 0;
+        }
+
+        h1 {
+            text-align: center;
+            background-color: #3498db;
+            color: #ffffff;
+            padding: 20px;
+            margin-top: 0;
+        }
+
+        .container {
+            background-color: #ffffff;
+            width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .section {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        input[type="text"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 3px;
+        }
+
+        input[type="submit"] {
+            background-color: #3498db;
+            color: #ffffff;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #2980b9;
+        }
+    </style>
+</head>
+<body>
+    <h1> Lista de Pacientes </h1>
+
+    <%           
+                
+            // Recebendo dados
+            String rg = request.getParameter("rg");                        
+            
+            //Consultar
+            try{
+                Class.forName("com.mysql.jdbc.Driver"); //Registra;            
+                Connection conexao = DriverManager.getConnection("jdbc:mysql://localhost:3306/clinica", "root", ""); // Abrindo Conexão;
+                Statement stmt = conexao.createStatement(); //Criando instrução;               
+                String sql = "SELECT * FROM fichamedica "; //Definição instrução SQL;
+                ResultSet rs = stmt.executeQuery(sql); // Executando Query;
+                
+    %>
+         <table style="width:75%"; border="1">
+            <tr bgcolor="00FFFF">
+                <th> #</th>
+                <th> Id.</th>
+                <th> Nome</th>
+                <th> Sobrenome</th>
+                <th> Nome da Mãe</th>
+                <th> Nome Social</th>
+                <th> Convênio</th>
+                <th> Plano</th>
+                <th> SubPlano</th>
+                <th> Endereço</th>
+                <th> R.G.</th>
+                <th> C.P.F</th>
+                <th> Procedimento</th>
+                <th> Especialidade</th>
+                <th> Nome do Médico</th>
+                <th> Detalhes</th>
+                <th> Alterar?</th>
+                <th> Excluir?</th>
+            </tr>
+            
+        <%    
+                //Saída
+                while (rs.next()){
+        %>
+            <tr>
+                <td><%= rs.getRow() %></td>
+                <td><%= rs.getString("id") %></td>
+                <td><%= rs.getString("nome") %></td>
+                <td><%= rs.getString("sobrenome") %></td>
+                <td><%= rs.getString("nomeMae") %></td> 
+                <td><%= rs.getString("nomeSocial") %></td>
+                <td><%= rs.getString("convenio") %></td>
+                <td><%= rs.getString("plano") %></td>
+                <td><%= rs.getString("subPlano") %></td>
+                <td><%= rs.getString("endereco") %></td>
+                <td><%= rs.getString("rg") %></td>
+                <td><%= rs.getString("cpf") %></td>
+                <td><%= rs.getString("procedimento") %></td>
+                <td><%= rs.getString("especialidade") %></td>
+                <td><%= rs.getString("nomeMedico") %></td>
+                <td><a href="Consulta_Paciente_RG.jsp?rg=<%= rs.getString("rg") %>"><img src="imagem/lupanew.png" alt=""/></a></td>
+                <td><a href="Alteração_Paciente_Exclusão.jsp?rg=<%= rs.getString("rg") %>"><img src="imagem/updatenew.png" alt=""/></a></td> 
+                <td><a href="Exclusão_Paciente_JSP.jsp?rg=<%= rs.getString("rg") %>"><img src="imagem/deletenew.png" alt=""/></a></td> 
+            </tr> 
+                    
+        <%
+                }             
+        %>   
+        </table>
+        <%
+                conexao.close(); //fecha                
+            }
+            catch(Exception ex){
+                ex.printStackTrace();
+                out.println("Erro: " + ex.toString());
+            }                 
+        %>
+    </body>                                        
+</html>
+
+
+-----------------------------------------------------------------
+
+
+//1.7.Alteração de Paciente:
+
+//Alteração_Paciente.jsp
+<!DOCTYPE html>
+<html>
+<head>
+    <title> Alteração Paciente </title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+            margin: 0;
+            padding: 0;
+        }
+
+        h1 {
+            text-align: center;
+            background-color: #3498db;
+            color: #ffffff;
+            padding: 20px;
+            margin-top: 0;
+        }
+
+        .container {
+            background-color: #ffffff;
+            width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .section {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        input[type="text"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 3px;
+        }
+
+        input[type="submit"] {
+            background-color: #3498db;
+            color: #ffffff;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #2980b9;
+        }
+    </style>
+</head>
+<body>
+    <h1> Alteração Paciente </h1>
+    <div class="container">
+        <form action="Alteração_Paciente_Forms.jsp" method="post">
+            <div class="section">
+                <h2>Digite o R.G. para Alteração do Paciente</h2>                         
+                <label for="rg">RG:</label>
+                <input type="text" id="rg" name="rg">
+            </div>
+            <input type="reset" name="limpa" value="Limpar"> 
+            <input type="submit" value="Enviar">
+        </form>
+    </div>
+</body>
+</html>
+
+
+//Alteração_Paciente_Forms.jsp
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@page import="model.fichaMedica"%>
+<%@page import="java.text.*" import="java.lang.*"%>
+<%@page import="java.sql.*"%>
+<%@ page import="model.fichaMedica" %>
+<%@ page import="dao.fichaMedicaDAO" %>
+<jsp:useBean id="ficha" class="model.fichaMedica" />
+<jsp:useBean id="fichaDao" class="dao.fichaMedicaDAO" />
+<jsp:setProperty property="*" name="ficha" />
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title> Dados Para Alteração do Paciente </title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+            margin: 0;
+            padding: 0;
+        }
+
+        h1 {
+            text-align: center;
+            background-color: #3498db;
+            color: #ffffff;
+            padding: 20px;
+            margin-top: 0;
+        }
+
+        .container {
+            background-color: #ffffff;
+            width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .section {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        input[type="text"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 3px;
+        }
+
+        input[type="submit"] {
+            background-color: #3498db;
+            color: #ffffff;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #2980b9;
+        }
+    </style>
+</head>
+<body>
+    <h1> Dados Para Alteração do Paciente </h1>
+
+    <%
+            // Recebendo dados            
+            String rg = request.getParameter("rg");                      
+            
+            //Consultar
+            try{
+                Class.forName("com.mysql.jdbc.Driver"); //Registra;            
+                Connection conexao = DriverManager.getConnection("jdbc:mysql://localhost:3306/clinica", "root", ""); // Abrindo Conexão;
+                Statement stmt = conexao.createStatement(); //Criando instrução;               
+                String sql = "SELECT * FROM fichamedica WHERE rg = " + rg; //Definição instrução SQL;
+                ResultSet rs = stmt.executeQuery(sql); // Executando Query;
+                
+                //Saída
+                while (rs.next()){
+        %>        
+       
+              <form method="post" action="Alteração_Paciente_JSP.jsp">
+                  Identificação: <input type="text" name="id" readonly="true" value="<%= rs.getString("id") %>"> <p>
+                  Nome: <input type="text" name="nome" value="<%= rs.getString("nome") %>"> <p>
+                  Sobrenome: <input type="text" name="sobrenome" value="<%= rs.getString("sobrenome") %>"> <p>
+                  Nome da Mãe: <input type="text" name="nomeMae" value="<%= rs.getString("nomeMae") %>">
+                  Nome Social: <input type="text" name="nomeSocial" value="<%= rs.getString("nomeSocial") %>"> <p>
+                  Convênio: <input type="text" name="convenio" value="<%= rs.getString("convenio") %>"> <p>
+                  Plano: <input type="text" name="plano" value="<%= rs.getString("plano") %>">
+                  SubPlano: <input type="text" name="subPlano" value="<%= rs.getString("subPlano") %>"> <p>
+                  Endereço: <input type="text" name="endereco" value="<%= rs.getString("endereco") %>"> <p>
+                  R.G.: <input type="text" name="rg" value="<%= rs.getString("rg") %>"> <p>
+                  C.P.F.: <input type="text" name="cpf" value="<%= rs.getString("cpf") %>"> <p>
+                  Procedimento: <input type="text" name="procedimento" value="<%= rs.getString("procedimento") %>"> <p>
+                  Especialidade: <input type="text" name="especialidade" value="<%= rs.getString("especialidade") %>"> <p>
+                  Nome do Médico: <input type="text" name="nomeMedico" value="<%= rs.getString("nomeMedico") %>">
+                  <input type="submit" name="salvar" value="Salvar">
+              </form>
+        <%
+                }                                        
+                conexao.close(); //fecha                
+            }
+            catch(Exception ex){
+                ex.printStackTrace();
+                out.println("Erro: " + ex.toString());
+            }            
+        %>
+    </body>   
+</html>
+
+//Alteração_Paciente_JSP.jsp
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@page import="model.fichaMedica"%>
+<%@page import="java.text.*" import="java.lang.*"%>
+<%@page import="java.sql.*"%>
+<%@ page import="model.fichaMedica" %>
+<%@ page import="dao.fichaMedicaDAO" %>
+<jsp:useBean id="ficha" class="model.fichaMedica" />
+<jsp:useBean id="fichaDao" class="dao.fichaMedicaDAO" />
+<jsp:setProperty property="*" name="ficha" />
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title> Resultado Cadastro Paciente </title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+            margin: 0;
+            padding: 0;
+        }
+
+        h1 {
+            text-align: center;
+            background-color: #3498db;
+            color: #ffffff;
+            padding: 20px;
+            margin-top: 0;
+        }
+
+        .container {
+            background-color: #ffffff;
+            width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .section {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        input[type="text"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 3px;
+        }
+
+        input[type="submit"] {
+            background-color: #3498db;
+            color: #ffffff;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #2980b9;
+        }
+    </style>
+</head>
+<body> 
+   
+        <%            
+            // Recebendo dados
+            //String id = request.getParameter("id");
+            String nome = request.getParameter("nome");
+            String sobrenome = request.getParameter("sobrenome");
+            String nomeMae = (request.getParameter("nomeMae"));
+            String nomeSocial = request.getParameter("nomeSocial");
+            String convenio = request.getParameter("convenio");
+            String plano = request.getParameter("plano");
+            String subPlano = request.getParameter("subPlano");
+            String endereco = request.getParameter("endereco");
+            String rg = request.getParameter("rg");
+            String cpf = request.getParameter("cpf");
+            String procedimento = request.getParameter("procedimento");
+            String especialidade = request.getParameter("especialidade");
+            String nomeMedico = request.getParameter("nomeMedico");
+            
+            //Alterar!
+           try {
+            Class.forName("com.mysql.jdbc.Driver"); // Registra          
+            Connection conexao = DriverManager.getConnection("jdbc:mysql://localhost:3306/clinica", "root", ""); // Abrindo Conexão
+    
+             String sql = "UPDATE fichamedica SET nome = ?, sobrenome = ?, nomeMae = ?, nomeSocial = ?, convenio = ?, " +
+                           "plano = ?, subPlano = ?, endereco = ?, cpf = ?, procedimento = ?, especialidade = ?, " +
+                           "nomeMedico = ? WHERE rg = ?"; // Definindo instrução SQL
+    
+            try (PreparedStatement pstmt = conexao.prepareStatement(sql)) {
+                pstmt.setString(1, nome);
+                pstmt.setString(2, sobrenome);
+                pstmt.setString(3, nomeMae);
+                pstmt.setString(4, nomeSocial);
+                pstmt.setString(5, convenio);
+                pstmt.setString(6, plano);
+                pstmt.setString(7, subPlano);
+                pstmt.setString(8, endereco);
+                pstmt.setString(9, cpf);
+                pstmt.setString(10, procedimento);
+                pstmt.setString(11, especialidade);
+                pstmt.setString(12, nomeMedico);
+                pstmt.setString(13, rg);
+
+            pstmt.executeUpdate(); // Executando Query.
+            } // O recurso PreparedStatement é automaticamente fechado aqui
+    
+            conexao.close(); // Fechando Conexão
+            } catch (ClassNotFoundException | SQLException e) {
+            e.printStackTrace(); // Trate exceções de maneira adequada em sua aplicação.
+            }
+  
+            //Saída
+            out.println("<b> Registro - Alterado! </b>");
+         
+        %>  
+    </body>   
+</html>
+
+---------------------------------------------------------------
+
+//1.8.Exclusão de Paciente:
+
+//Exclusão_Paciente.jsp
+<!DOCTYPE html>
+<html>
+<head>
+    <title> Exclusão Paciente </title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+            margin: 0;
+            padding: 0;
+        }
+
+        h1 {
+            text-align: center;
+            background-color: #3498db;
+            color: #ffffff;
+            padding: 20px;
+            margin-top: 0;
+        }
+
+        .container {
+            background-color: #ffffff;
+            width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .section {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        input[type="text"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 3px;
+        }
+
+        input[type="submit"] {
+            background-color: #3498db;
+            color: #ffffff;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #2980b9;
+        }
+    </style>
+</head>
+<body>
+    <h1> Exclusão Paciente </h1>
+    <div class="container">
+        <form action="Exclusão_Paciente_JSP.jsp" method="post">
+            <div class="section">
+                <h2>Digite o R.G. para Exclusão do Paciente</h2>                         
+                <label for="rg">RG:</label>
+                <input type="text" id="rg" name="rg">
+            </div>
+            <input type="reset" name="limpa" value="Limpar"> 
+            <input type="submit" value="Enviar">
+        </form>
+    </div>
+</body>
+</html>
+
+//Exclusão_Paciente_JSP.jsp
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@page import="model.fichaMedica"%>
+<%@page import="java.text.*" import="java.lang.*"%>
+<%@page import="java.sql.*"%>
+<%@ page import="model.fichaMedica" %>
+<%@ page import="dao.fichaMedicaDAO" %>
+<jsp:useBean id="ficha" class="model.fichaMedica" />
+<jsp:useBean id="fichaDao" class="dao.fichaMedicaDAO" />
+<jsp:setProperty property="*" name="ficha" />
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title> Resultado Cadastro Paciente </title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+            margin: 0;
+            padding: 0;
+        }
+
+        h1 {
+            text-align: center;
+            background-color: #3498db;
+            color: #ffffff;
+            padding: 20px;
+            margin-top: 0;
+        }
+
+        .container {
+            background-color: #ffffff;
+            width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .section {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        input[type="text"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 3px;
+        }
+
+        input[type="submit"] {
+            background-color: #3498db;
+            color: #ffffff;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #2980b9;
+        }
+    </style>
+</head>
+<body>
+    <h1> Resultado Cadastro Paciente </h1>
+
+    <%
+            // Recebendo dados
+            
+            String rg = request.getParameter("rg");                      
+            
+            //Consultar
+            try{
+                Class.forName("com.mysql.jdbc.Driver"); //Registra;            
+                Connection conexao = DriverManager.getConnection("jdbc:mysql://localhost:3306/clinica", "root", ""); // Abrindo Conexão;
+                Statement stmt = conexao.createStatement(); //Criando instrução;               
+                String sql = "DELETE FROM fichamedica WHERE rg = " + rg; //Definição instrução SQL;
+                stmt.executeUpdate(sql); // exec. Query.
+                conexao.close(); //fecha
+           
+                //Saída
+                out.println("<b> Registro excluído com sucesso! </b>");                
+            }
+            catch(Exception ex){
+                ex.printStackTrace();
+                out.println("Erro: " + ex.toString());
+            } 
+    %>
+    </body>   
+</html>
+
+---------------------------FIM------------------------------------
+
+

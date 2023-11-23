@@ -1535,6 +1535,39 @@ public class fichaMedicaDAO {
     </body>   
 </html>
 
----------------------------FIM------------------------------------
+---------------------------------------------------------------
+
+//2.0.Banco de dados: 
+
+CREATE USER 'clinica'@'localhost' IDENTIFIED BY 'clinica';
+
+GRANT ALL PRIVILEGES ON Clinica.* TO 'clinica'@'localhost';
+
+FLUSH PRIVILEGES;
+
+CREATE DATABASE IF NOT EXISTS Clinica;
+
+USE Clinica;
+
+CREATE TABLE IF NOT EXISTS fichaMedica (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    nome VARCHAR(255) NOT NULL,
+    sobrenome VARCHAR(255)NOT NULL,
+    nomeMae VARCHAR(255) NOT NULL,
+    nomeSocial VARCHAR(255) NOT NULL,
+    convenio VARCHAR(255) NOT NULL,
+    plano VARCHAR(255) NOT NULL,
+    subPlano VARCHAR(255) NOT NULL,
+    endereco VARCHAR(255) NOT NULL,
+    rg VARCHAR(20) NOT NULL,
+    cpf VARCHAR(14) NOT NULL,
+    procedimento VARCHAR(255) NOT NULL,
+    especialidade VARCHAR(255) NOT NULL,
+    nomeMedico VARCHAR(255) NOT NULL
+);
+
+
+
+
 
 
